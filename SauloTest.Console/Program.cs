@@ -17,18 +17,25 @@ namespace prometricAssessment
             var provider = RegisterServices();
             ShapeAppService _appService = new ShapeAppService(provider.GetRequiredService<IShapeService>());
 
-            var list = GetMockData();
-            Console.WriteLine("Hello, here is my shape list: ");
+            // add sharp to the db list
+            foreach (var item in GetMockData())
+            {
+                _appService.Add(item);
+            }
 
+            // get list of sharp from the db 
+            var list = _appService.GetAll();
+
+            // show sharp details
+            Console.WriteLine("Hello, here is my shape list: ");
             foreach (var item in list)
             {
                 Console.WriteLine($"Name: {item.Name}");
                 Console.WriteLine($"Area: {item.GetArea()}");
                 Console.WriteLine($"Perimeter: {item.GetPerimeter()}");
-                _appService.Add(item);
             }
 
-
+            // report
             while (true)
             {
                 Console.WriteLine($"Type 0 - To print the report");
@@ -40,12 +47,22 @@ namespace prometricAssessment
                         Console.WriteLine(item.Details);
                     }
                 }
+
+                // remove sharp
+                if (list.Count > 0)
+                {
+                    Console.WriteLine($"the sharp with the name {list[0].Name} and ID  {list[0].Id} was removeed from the list ");
+                    _appService.Delete(list[0]);
+                }
                 Console.WriteLine($"Press enter to continue");
                 Console.ReadLine();
+               
             }
+
+
         }
 
-        private static IReadOnlyCollection<Shape> GetMockData()
+        private static List<Shape> GetMockData()
         {
             var list = new List<Shape>()
             {
@@ -71,7 +88,6 @@ namespace prometricAssessment
                 new Circle(4),
                 new Circle(2),
             };
-
             return list;
         }
 

@@ -1,6 +1,7 @@
 ﻿using Doman.Entities;
 using SauloTest.AppService.Interfaces;
 using SauloTest.ViewModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 
@@ -18,6 +19,11 @@ namespace SauloTest.AppService
         public void Add(Shape obj)
         {
             _shapeService.Add(obj);
+        }
+
+        public List<Shape>  GetAll()
+        {
+           return _shapeService.GetAll();
         }
 
         public void Delete(Shape obj)

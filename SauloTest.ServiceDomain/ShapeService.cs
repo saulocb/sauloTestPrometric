@@ -17,10 +17,11 @@ namespace SauloTest.ServiceDomain
 
         public void Delete(Shape obj)
         {
-            throw new NotImplementedException();
+            var item = DB.Find(x => x.Id == obj.Id);
+            DB.Remove(item);
         }
 
-        public IReadOnlyCollection<Shape> GetAll()
+        public List<Shape> GetAll()
         {
             return DB;
         }
@@ -34,5 +35,7 @@ namespace SauloTest.ServiceDomain
         {
             return DB.OrderBy(x => x.GetPerimeter()).ToList();
         }
+
+
     }
 }

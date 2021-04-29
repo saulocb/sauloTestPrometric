@@ -8,7 +8,7 @@ namespace SauloTest.AppService.Interfaces
         void Add(Shape obj);
         IReadOnlyCollection<Shape> GetShapeSortedByArea();
         IReadOnlyCollection<Shape> GetShapeSortedByPerimeter();
-        IReadOnlyCollection<Shape> GetAll();
+        List<Shape> GetAll();
         void Delete(Shape obj);
     }
 }
