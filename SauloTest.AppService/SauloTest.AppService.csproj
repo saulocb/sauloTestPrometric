@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Doman\SauloTest.Domain.csproj" />
+    <ProjectReference Include="..\SauloTest.ViewModel\SauloTest.ViewModel.csproj" />
+  </ItemGroup>
+
+</Project>
